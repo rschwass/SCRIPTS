@@ -1,0 +1,47 @@
+
+
+#as root or sudo everything
+cd ~
+
+sudo apt-get update
+sudo apt-get upgrade
+
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz
+sudo mkdir /usr/lib/jvm
+sudo tar -zxvf jdk*.tar.gz -C /usr/lib/jvm/
+
+for alt in java javac; do sudo update-alternatives --install /usr/bin/$alt $alt /usr/lib/jvm/jdk*/bin/$alt 1000; done
+for alt in java javac; do sudo update-alternatives --config $alt; done
+
+sudo apt-get install build-essential libreadline-dev libssl-dev libpq5 libpq-dev libreadline5 libsqlite3-dev libpcap-dev git git-core autoconf postgresql pgadmin3 curl zlib1g-dev libxml2-dev libxslt1-dev libyaml-dev curl zlib1g-dev sqlite3 libcurl4-openssl-dev python-software-properties libffi-dev libpcap-dev
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
+
+rbenv install 2.3.1
+rbenv global 2.3.1
+ruby -v
+
+
+cd /opt
+sudo git clone https://github.com/rapid7/metasploit-framework.git
+sudo chown -R `whoami` /opt/metasploit-framework
+cd metasploit-framework
+
+
+chmod +t -R ~/.bundle/cache
+gem install bundler
+bundle install
+
+sudo mkdir /opt/set
+sudo git clone https://github.com/trustedsec/social-engineer-toolkit/ /opt/set/
+cd /opt/set
+sudo python setup.py install
+
+# for additional help visit https://gorails.com/setup/windows/10
