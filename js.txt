@@ -1,0 +1,3 @@
+function ghFunction() {
+    alert("Hello World!");
+}
