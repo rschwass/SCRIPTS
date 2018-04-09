@@ -1,1 +1,2 @@
-nice
+$breaker=no
+echo nice
