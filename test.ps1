@@ -1,0 +1,1 @@
+echo nice;read-host
