@@ -1,2 +1,2 @@
-$breaker=$FALSE
+$a_breaker=$FALSE
 echo nice
