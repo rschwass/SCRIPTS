@@ -1,1 +1,1 @@
-echo nice;read-host
+nice
