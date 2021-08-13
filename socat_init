@@ -8,8 +8,8 @@
 # Short-Description:    socat service
 ### END INIT INFO
 
-USER=nobody
-GROUP=nogroup
+USER=root
+GROUP=root
 TARGET=$3
 INPORT=$2
 DSTPORT=$4
