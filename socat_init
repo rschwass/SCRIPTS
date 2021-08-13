@@ -18,7 +18,7 @@ LOGFILE=/var/log/socat-$INPORT.log
 SOCAT=/usr/bin/socat
 
 start() {
-  $SOCAT TCP4-LISTEN:$INPORT,fork,reuseaddr TCP4:$TARGET:$DSTPORT </dev/null > $LOGFILE &
+  $SOCAT TCP-LISTEN:$INPORT,fork TCP:$TARGET:$DSTPORT </dev/null > $LOGFILE &
   echo $! >$PIDFILE
 }
 
